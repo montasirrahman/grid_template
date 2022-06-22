@@ -1,25 +1,6 @@
 <?php
 /*~ class.pop3.php
-.---------------------------------------------------------------------------.
-|  Software: PHPMailer - PHP email class                                    |
-|   Version: 5.2.4                                                          |
-|      Site: https://code.google.com/a/apache-extras.org/p/phpmailer/       |
-| ------------------------------------------------------------------------- |
-|     Admin: Jim Jagielski (project admininistrator)                        |
-|   Authors: Andy Prevost (codeworxtech) codeworxtech@users.sourceforge.net |
-|          : Marcus Bointon (coolbru) coolbru@users.sourceforge.net         |
-|          : Jim Jagielski (jimjag) jimjag@gmail.com                        |
-|   Founder: Brent R. Matzelle (original founder)                           |
-| Copyright (c) 2010-2012, Jim Jagielski. All Rights Reserved.              |
-| Copyright (c) 2004-2009, Andy Prevost. All Rights Reserved.               |
-| Copyright (c) 2001-2003, Brent R. Matzelle                                |
-| ------------------------------------------------------------------------- |
-|   License: Distributed under the Lesser General Public License (LGPL)     |
-|            http://www.gnu.org/copyleft/lesser.html                        |
-| This program is distributed in the hope that it will be useful - WITHOUT  |
-| ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or     |
-| FITNESS FOR A PARTICULAR PURPOSE.                                         |
-'---------------------------------------------------------------------------'
+
 */
 
 /**
