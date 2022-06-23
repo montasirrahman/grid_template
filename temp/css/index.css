@@ -1,0 +1,123 @@
+.home-image {
+    background-image: url("https://cdn.cloudflare.steamstatic.com/steam/clusters/frontpage/15a194fd1c405920821c53bc/page_bg_english.jpg?t=1655874974");
+    height: 450px;;
+}
+.main_img_hover_container {
+    height: 350px;
+    max-width: 600px;
+    width: 100%;
+    /*background: linear-gradient(45deg, rgba(36, 130, 174, 0.54), rgba(24, 89, 119, 0.85) );*/
+    margin: 0;
+}
+.login_reg {
+    /* From https://css.glass */
+    background: linear-gradient(45deg, rgba(36, 130, 174, 0.54), rgba(24, 89, 119, 0.85) );
+    height: 350px;
+    margin-top: 50px;
+}
+
+  #tab-btn {
+    display: flex;
+    background: #171A21;
+    
+  }
+  .login-tab,
+  .register-tab {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #b8b6b4;
+    font-family: "MotivaSansRegular";
+    font-size: 14px;
+    padding: 10px;
+    width: 180px;
+  }
+  .active {
+    color: #fff;
+    background: linear-gradient(45deg, rgba(36, 130, 174, 0.54), rgba(24, 89, 119, 0.85) );
+  }
+  .sign_text {
+    color: #fff;
+    font-family: "MotivaSansRegular";
+    font-size: 8px;
+  }
+  .login-box,
+  .register-box {
+    width: 100%;
+    padding: 20px 30px 30px 30px;
+  }
+  .register-box {
+    display: none;
+  }
+  .inp {
+    width: 100%;
+    padding: 8px;
+    font-family: "MotivaSansRegular";
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: #E8F0FE;
+    border-radius: 3px;
+    color: #000;
+    
+    border: 1px solid rgba(36, 130, 174, 0.54);
+  }
+  .inp:focus {
+    outline: none;
+    border: 1px solid rgba(36, 130, 174, 0.54);
+  }
+  .sub-btn {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    font-family: "MotivaSansRegular";
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient( to right, #1a44c2 5%, #1a44c2 60%);
+    border-radius: 4px;
+    color: #c3e1f8;
+    cursor: pointer;
+  }
+  .sub-btn:focus {
+    outline: none;
+  }
+  .sub-btn:active {
+    border: none;
+    margin-top: 5px;
+  }
+  #forgot {
+    font-size: 20px;
+    color: #444;
+    text-decoration: none;
+    display: block;
+  }
+  /*remember me text*/
+  .remember_me_text {
+    color: #fff;
+    font-family: "MotivaSansRegular";
+    font-size: 14px;
+  }
+  /*select*/
+  .home_select {
+    width: 100%;
+    padding: 8px;
+    font-family: "MotivaSansRegular";
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: #E8F0FE;
+    border-radius: 3px;
+    color: #000;
+    border: 1px solid rgba(36, 130, 174, 0.54);
+  }
+  .home_select:focus {
+    outline: none;
+    border: 1px solid rgba(36, 130, 174, 0.54);
+  }
+  @media only screen and (max-width: 975px) {
+    .main_img_hover_container {
+      display: none;
+    }
+  }
