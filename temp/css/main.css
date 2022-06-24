@@ -158,3 +158,8 @@ footer {
     display: none;
   }
 }
+@media only screen and (min-width: 600px) {
+  .hide_in_pc {
+    display: none;
+  }
+}

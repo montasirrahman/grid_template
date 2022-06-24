@@ -121,3 +121,9 @@
       display: none;
     }
   }
+  @media only screen and (max-width: 975px) {
+    .main_img_hover_container {
+      display: none;
+    }
+  }
+  
