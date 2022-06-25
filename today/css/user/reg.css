@@ -1,0 +1,129 @@
+.reg_cointainer {
+    background-color: #212429;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "MotivaSansRegular", Sans-serif;
+
+    background-image: url('./reg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left; 
+}
+.create_your_account {
+    font-size: 34px;
+    color: #fff;
+    padding: 50px 0 10px 0;
+    margin: 0;
+}
+.register_form {
+    border: 0px solid red;
+    width: 98%;
+    max-width: 550px;
+    display: block;
+    margin: 0 auto;
+}
+.form-group {
+    padding: 1px 0;
+}
+.form-group p {
+    color: #fff;
+    padding: 0px;
+    margin: 0;
+    text-align: left;
+    display: block;
+    font-size: 14px;
+    color: #b8b6b4;
+}
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-family: "MotivaSansRegular";
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: #32353C;
+    border-radius: 3px;
+    color: #fff;
+    
+    border: 1px solid #32353C;
+}
+.form-control:focus {
+    outline: none;
+    border: 1px solid rgba(36, 130, 174, 0.54);
+}
+.form-group {
+    font-size: 14px;
+    color: #b8b6b4;
+}
+.box {
+    padding: 15px 0;
+}
+.single {
+    padding: 0px 0 10px 0;   
+}
+/*select---------------------------------------------------------------*/
+select {
+    background-color: #32353C;
+    color: #b8b6b4;
+    border: 1px solid #32353C;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+}
+select:focus {
+    outline: none;
+    border: 1px solid rgba(36, 130, 174, 0.54);
+}
+.custom-select {
+    margin: 0 0 15px 0;
+}
+/*submit*/
+.sub-btn {
+    width: 200px;
+    margin: 20px auto;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    font-family: "MotivaSansRegular";
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient( to right, #1a44c2 5%, #1a44c2 60%);
+    border-radius: 4px;
+    color: #c3e1f8;
+    cursor: pointer;
+  }
+  .sub-btn:focus {
+    outline: none;
+  }
+  .sub-btn:active {
+    border: none;
+    margin-top: 5px;
+  }
+/*text sign in*/
+.text-center {
+    border: 0px solid red;
+    width: 100%;
+    max-width: 225px;
+    display: block;
+    margin: 0 auto;
+
+    font-size: 14px;
+    color: #b8b6b4;
+    padding: 0 0 50px 0;
+}
+.text-center a {
+    color: #fff;
+}
+/*message*/
+.message {
+    background: linear-gradient(45deg, rgba(36, 130, 174, 0.54), rgba(24, 89, 119, 0.85) );
+    color: #fff;
+    padding: 0px;
+    font-size: 14px;
+    font-family: "MotivaSansRegular", Sans-serif;
+    border-radius: 0px;
+    width: 100%;
+    margin-bottom: 10px;
+}

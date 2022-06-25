@@ -42,7 +42,7 @@
                             <input type="email" name="email" placeholder="Enter Email" class="inp" required /><br />
                             <input type="password" name="password" placeholder="Password" class="inp" required /><br />
                             <!--select-->
-							<select name="catagory" class="home_select" required>
+							              <select name="catagory" class="home_select" required>
                                 <option value="">I am..</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>

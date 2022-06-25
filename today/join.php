@@ -1,12 +1,103 @@
+<?php
+    error_reporting(0);
+    error_reporting(error_reporting() & ~E_NOTICE);
+?>
+<?php
+include('./database/db.php');
+$msg="";
+if(isset($_POST['submit'])){
+	$name=$_POST['name'];
+	$email=$_POST['email'];
+	$password=$_POST['password'];
+	$username=$_POST['username'];
+	$category=$_POST['category'];
+	$date_of_birth=$_POST['date_of_birth'];
+	$single=$_POST['single'];
+	$country=$_POST['country'];
+	$city=$_POST['city'];
+	$interested=$_POST['interested'];
+	$lookingfor=$_POST['lookingfor'];
+	$membership=$_POST['membership'];
+	$p1=$_POST['p1'];
+	$p1_date_of_birth=$_POST['p1_date_of_birth'];
+	$p2=$_POST['p2'];
+	$p2_date_of_birth=$_POST['p2_date_of_birth'];
+	
+	$check=mysqli_num_rows(mysqli_query($con,"select * from users where email='$email' OR username='$username'"));
+	
+	if($check>0){
+		$msg="Email or Username is already present";
+	}else{
+		$verification_id=rand(111111111,999999999);
+		
+		mysqli_query($con,"insert into users(name,email,password,verification_status,verification_id,username,category,date_of_birth,single,country,city,interested,lookingfor,membership,p1,p1_date_of_birth,p2,p2_date_of_birth) values('$name','$email','$password',0,'$verification_id','$username','$category','$date_of_birth','$single','$country','$city','$interested','$lookingfor','$membership','$p1','$p1_date_of_birth','$p2','$p2_date_of_birth')");
+	
+
+		$msg="We've just sent a verification link to <strong>$email</strong>. Please check your inbox and click on the link to get started. If you can't find this email (which could be due to spam filters), just request a new one here.";
+		
+		
+
+		$mailHtml="		
+		<div style='width: 100%;height: 100%;padding:50px 0; margin:0;background-color: #F8F9FC;'>	
+			<div style='max-width: 500px;width: 100%;display: block;margin: 0 auto;background-color: #fff;text-align:center;padding: 20px;'>
+				<h2 style='text-align:center;width: 250px;display: block;margin: 0 auto;padding:25px 0;font-family: 'Open Sans',Arial,Helvetica,sans-serif;font-size: 30px;color: #000;font-weight: 600;background-color: #;'>Lifestylesutopia</h2>
+				<h4 style='font-family: 'Open Sans',Arial,Helvetica,sans-serif;font-size: 18px;color: #263c51;margin: 25px 0 50px 0'>
+					Please confirm your account registration
+				</h4>
+				<a href='https://lifestylesutopia.com/0/check.php?id=$verification_id' style='color:#fff;font-family: 'Open Sans',Arial,Helvetica,sans-serif;font-size: 22px;background-color: #fd7801;text-decoration:none;padding: 10px 28px;border-radius: 4px;'>Verify</a>
+				<p style='padding: 8px;'></p>
+			</div>
+		</div>";
+		
+		
+		smtp_mailer($email,'Account Verification',$mailHtml);
+		
+	}
+}
+
+function smtp_mailer($to,$subject, $msg){
+	require_once("smtp/class.phpmailer.php");
+	$mail = new PHPMailer(); 
+	$mail->IsSMTP(); 
+	$mail->SMTPDebug = 1; 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'tls'; 
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 587; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "unfridaygroup@gmail.com";
+	$mail->Password = "bqdikvsrxwpswwch";
+	$mail->SetFrom('donotreply@mydomain.com', 'Lifestylesutopia');
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if(!$mail->Send()){
+		return 0;
+	}else{
+		return 1;
+	}
+}
+
+
+
+$home_email = $_POST['email'];
+$home_password = $_POST['password'];
+$home_catagory = $_POST['catagory'];
+?>
+
+
 <html>
 <head>
     <?php include './include/meta.php';?>
     <title>Join</title>
     <link rel="stylesheet" href="./css/user/reg.css">
 </head>
-<?php
-    error_reporting(0);
-?>
 <body>
     <div class="grid-container">
         <?php include './include/header.php';?>
@@ -16,6 +107,12 @@
                 <form method="post" class="register_form">
 
                     <h2 class="create_your_account">CREATE YOUR ACCOUNT</h2>
+
+                    <div class="message">
+                        <?php
+                        echo $msg;
+                        ?>
+                    </div>
 
                     <div class="form-group">
                         <p for="">Full Name : </p>
@@ -35,7 +132,7 @@
                     </div>
                     <div class="form-group" style="display: none">
                         <p for="">Category : </p>
-                        <input type="text" class="form-control" name="category" id="category" placeholder="Category" value="<?php echo $home_catagory; ?>" disabled>
+                        <input type="text" class="form-control" name="category" id="category" placeholder="category" value="<?php echo $home_catagory; ?>" >
                     </div>
                     <div class="form-group">
                         <p for="">Date of Birth : </p>
@@ -71,9 +168,9 @@
                         ';
                     } else{
                         echo '
-                            <div class="form-group">
-                                <p for="">Single : </p>
-                                <input type="checkbox" class="form-control" name="single" id="single" placeholder="single" value="1">
+                            <div class="form-group single">
+                                <lable for="">Single : </lable>
+                                <input type="checkbox" class="form-control-box" name="single" id="single" placeholder="single" value="1">
                             </div>
                         ';
                     }
@@ -82,7 +179,7 @@
 
 
                     <!---Country--->
-                    <div class="form-group">
+                    <div class="form-group custom-select">
                         <p for="">Country : </p>
                         <select id="country" name="country" required>
                             <option>select country</option>
@@ -350,19 +447,19 @@
                     </div>
 
                     <!---Check box--->
-                    <div class="form-group">
+                    <div class="form-group box_radio">
                         <p for="">Interested in : </p>
-                        <input type="radio" class="form-control" name="interested" id="interested" placeholder="interested" value="male">Male 
-                        <input type="radio" class="form-control" name="interested" id="interested" placeholder="interested" value="female">Female 
-                        <input type="radio" class="form-control" name="interested" id="interested" placeholder="interested" value="mf">Couple  
-                        <input type="radio" class="form-control" name="interested" id="interested" placeholder="interested" value="mm">Male Couple  
-                        <input type="radio" class="form-control" name="interested" id="interested" placeholder="interested" value="ff">Female Couple  
-                        <input type="radio" class="form-control" name="interested" id="interested" placeholder="interested" value="tv">TV/TS/CD  
+                        <input type="radio" class="form-control-box" name="interested" id="interested" placeholder="interested" value="male"><span> Male </span> 
+                        <input type="radio" class="form-control-box" name="interested" id="interested" placeholder="interested" value="female"><span> Female </span>   
+                        <input type="radio" class="form-control-box" name="interested" id="interested" placeholder="interested" value="mf"><span> Couple </span>   
+                        <input type="radio" class="form-control-box" name="interested" id="interested" placeholder="interested" value="mm"><span> Male Couple </span>   
+                        <input type="radio" class="form-control-box" name="interested" id="interested" placeholder="interested" value="ff"><span> Female Couple </span>   
+                        <input type="radio" class="form-control-box" name="interested" id="interested" placeholder="interested" value="tv"><span> TV/TS/CD </span>   
                     </div>
-                    <div class="form-group">
+                    <div class="form-group box box_radio">
                         <p for="">Looking for : </p>
-                        <input type="radio" class="form-control" name="lookingfor" id="lookingfor" placeholder="lookingfor" value="friends">Friends 
-                        <input type="radio" class="form-control" name="lookingfor" id="lookingfor" placeholder="lookingfor" value="event">Events & Places 
+                        <input type="radio" class="form-control-box" name="lookingfor" id="lookingfor" placeholder="lookingfor" value="friends"><span> Friends </span>  
+                        <input type="radio" class="form-control-box" name="lookingfor" id="lookingfor" placeholder="lookingfor" value="event"><span> Events & Places  </span> 
                     </div>
                     
 
@@ -370,13 +467,7 @@
 
                     <!---Button---->
                     <div class="form-group">
-                        <button type="submit"  name="submit" class="btn btn-success btn-lg btn-block">JOIN</button>
-                    </div>
-
-                    <div class="message">
-                        <?php
-                        echo $msg;
-                        ?>
+                        <button type="submit"  name="submit" class="sub-btn">JOIN</button>
                     </div>
                 </form>
                 <div class="text-center">Already have an account? <a href="login.php">Sign in</a></div>

@@ -26,7 +26,7 @@ html, body {
       'footer'
   ;
   grid-template-columns: 1fr;
-  grid-template-rows: 6rem 1fr 3rem;
+  grid-template-rows: 6rem 1fr 4rem;
   height: 100%;
 }
 header {
@@ -92,6 +92,14 @@ footer {
 }
 .b-googleicon:hover {
   color: #fff;
+}
+.f-googleicon {
+  color: #b8b6b4;
+  font-size: 30px;
+  padding: 15px;
+}
+.f-googleicon:hover {
+color: #fff;
 }
 /*header*/
 .header_logo {
